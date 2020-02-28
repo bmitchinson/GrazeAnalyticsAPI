@@ -727,6 +727,72 @@ margin-bottom: 20px;
     }
   }
 };
+        defs["MenuItems"] = {
+  "required" : [ "id", "restaurant_id", "title" ],
+  "properties" : {
+    "id" : {
+      "type" : "integer"
+    },
+    "restaurant_id" : {
+      "type" : "integer"
+    },
+    "title" : {
+      "type" : "string"
+    }
+  }
+};
+        defs["Orders"] = {
+  "required" : [ "id", "restaurant_id", "server_id", "table_id", "time_completed" ],
+  "properties" : {
+    "id" : {
+      "type" : "integer"
+    },
+    "restaurant_id" : {
+      "type" : "integer"
+    },
+    "server_id" : {
+      "type" : "integer"
+    },
+    "table_id" : {
+      "type" : "integer"
+    },
+    "time_completed" : {
+      "type" : "string"
+    }
+  }
+};
+        defs["Servers"] = {
+  "required" : [ "f_name", "id", "restaurant_id" ],
+  "properties" : {
+    "id" : {
+      "type" : "integer"
+    },
+    "restaurant_id" : {
+      "type" : "integer"
+    },
+    "f_name" : {
+      "type" : "string"
+    },
+    "l_name" : {
+      "type" : "string"
+    }
+  }
+};
+        defs["Tables"] = {
+  "required" : [ "id", "restaurant_id" ],
+  "properties" : {
+    "id" : {
+      "type" : "integer"
+    },
+    "restaurant_id" : {
+      "type" : "integer"
+    },
+    "description" : {
+      "type" : "string",
+      "example" : "Booth by the streetside window"
+    }
+  }
+};
   </script>
 
   <div class="container-fluid">
@@ -744,8 +810,23 @@ margin-bottom: 20px;
             <li class="nav-fixed nav-header active" data-group="_"><a href="#api-_">API Summary</a></li>
 
                   <li class="nav-header" data-group="Default"><a href="#api-Default">API Methods - Default</a></li>
-                    <li data-group="Default" data-name="searchFeedback" class="">
-                      <a href="#api-Default-searchFeedback">searchFeedback</a>
+                    <li data-group="Default" data-name="fetchFeedback" class="">
+                      <a href="#api-Default-fetchFeedback">fetchFeedback</a>
+                    </li>
+                    <li data-group="Default" data-name="fetchMenuItems" class="">
+                      <a href="#api-Default-fetchMenuItems">fetchMenuItems</a>
+                    </li>
+                    <li data-group="Default" data-name="fetchOrders" class="">
+                      <a href="#api-Default-fetchOrders">fetchOrders</a>
+                    </li>
+                    <li data-group="Default" data-name="fetchServers" class="">
+                      <a href="#api-Default-fetchServers">fetchServers</a>
+                    </li>
+                    <li data-group="Default" data-name="fetchTables" class="">
+                      <a href="#api-Default-fetchTables">fetchTables</a>
+                    </li>
+                    <li data-group="Default" data-name="loginPost" class="">
+                      <a href="#api-Default-loginPost">loginPost</a>
                     </li>
           </ul>
         </nav>
@@ -768,17 +849,16 @@ margin-bottom: 20px;
         <div id="sections">
                 <section id="api-Default">
                   <h1>Default</h1>
-                    <div id="api-Default-searchFeedback">
-                      <article id="api-Default-searchFeedback-0" data-group="User" data-name="searchFeedback" data-version="0">
+                    <div id="api-Default-fetchFeedback">
+                      <article id="api-Default-fetchFeedback-0" data-group="User" data-name="fetchFeedback" data-version="0">
                         <div class="pull-left">
-                          <h1>searchFeedback</h1>
+                          <h1>fetchFeedback</h1>
                           <p>searches all feedback</p>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">A filter style query of all collected feedback in the system.
-</p>
+                        <p class="marked">A filter style query of all collected feedback in the system.</p>
                         <p></p>
                         <br />
                         <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/feedback</span></code></pre>
@@ -786,24 +866,24 @@ margin-bottom: 20px;
                           <h3>Usage and SDK Samples</h3>
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-searchFeedback-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-searchFeedback-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-searchFeedback-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-searchFeedback-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-searchFeedback-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-searchFeedback-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-searchFeedback-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-searchFeedback-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-searchFeedback-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-searchFeedback-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-searchFeedback-0-python">Python</a></li>
+                          <li class="active"><a href="#examples-Default-fetchFeedback-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-fetchFeedback-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-fetchFeedback-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-fetchFeedback-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-fetchFeedback-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-fetchFeedback-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-fetchFeedback-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-fetchFeedback-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-fetchFeedback-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-fetchFeedback-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-fetchFeedback-0-python">Python</a></li>
                         </ul>
 
                         <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-searchFeedback-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost/feedback?restaurantId=&orderId=&menuItemId=&serverId=&serverName=&tableId=&starRatingValue=&hasStarRating=&hasComment="</code></pre>
+                          <div class="tab-pane active" id="examples-Default-fetchFeedback-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost/feedback?restaurantId=&orderId=&menuItemId=&serverId=&serverName=&tableId=&starRatingValue=&hasStarRating=&hasComment=&timestamp_start=&timestamp_emd="</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-Default-searchFeedback-0-java">
+                          <div class="tab-pane" id="examples-Default-fetchFeedback-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
 import io.swagger.client.auth.*;
 import io.swagger.client.model.*;
@@ -826,18 +906,20 @@ public class DefaultApiExample {
         Integer starRatingValue = 56; // Integer | filter by rating number
         Boolean hasStarRating = true; // Boolean | filter based on the existance of a star rating on the feedback
         Boolean hasComment = true; // Boolean | filter based on the existance of a comment on the feedback
+        String timestampStart = timestampStart_example; // String | filter to get feedback that occured on an order taken after this start timestamp
+        String timestampEmd = timestampEmd_example; // String | filter to get feedback that occured on an order taken before this end timestamp
         try {
-            array[Feedback] result = apiInstance.searchFeedback(restaurantId, orderId, menuItemId, serverId, serverName, tableId, starRatingValue, hasStarRating, hasComment);
+            array[Feedback] result = apiInstance.fetchFeedback(restaurantId, orderId, menuItemId, serverId, serverName, tableId, starRatingValue, hasStarRating, hasComment, timestampStart, timestampEmd);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#searchFeedback");
+            System.err.println("Exception when calling DefaultApi#fetchFeedback");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
 
-                          <div class="tab-pane" id="examples-Default-searchFeedback-0-android">
+                          <div class="tab-pane" id="examples-Default-fetchFeedback-0-android">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
 
 public class DefaultApiExample {
@@ -853,21 +935,23 @@ public class DefaultApiExample {
         Integer starRatingValue = 56; // Integer | filter by rating number
         Boolean hasStarRating = true; // Boolean | filter based on the existance of a star rating on the feedback
         Boolean hasComment = true; // Boolean | filter based on the existance of a comment on the feedback
+        String timestampStart = timestampStart_example; // String | filter to get feedback that occured on an order taken after this start timestamp
+        String timestampEmd = timestampEmd_example; // String | filter to get feedback that occured on an order taken before this end timestamp
         try {
-            array[Feedback] result = apiInstance.searchFeedback(restaurantId, orderId, menuItemId, serverId, serverName, tableId, starRatingValue, hasStarRating, hasComment);
+            array[Feedback] result = apiInstance.fetchFeedback(restaurantId, orderId, menuItemId, serverId, serverName, tableId, starRatingValue, hasStarRating, hasComment, timestampStart, timestampEmd);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#searchFeedback");
+            System.err.println("Exception when calling DefaultApi#fetchFeedback");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
   <!--
-  <div class="tab-pane" id="examples-Default-searchFeedback-0-groovy">
+  <div class="tab-pane" id="examples-Default-fetchFeedback-0-groovy">
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
-                            <div class="tab-pane" id="examples-Default-searchFeedback-0-objc">
+                            <div class="tab-pane" id="examples-Default-fetchFeedback-0-objc">
                               <pre class="prettyprint"><code class="language-cpp">Integer *restaurantId = 56; // pass in the restaurant id that you'd like feedback for
 Integer *orderId = 56; // filter by order id number (optional)
 Integer *menuItemId = 56; // filter by menu item id number (optional)
@@ -877,11 +961,13 @@ Integer *tableId = 56; // filter by table id number (optional)
 Integer *starRatingValue = 56; // filter by rating number (optional)
 Boolean *hasStarRating = true; // filter based on the existance of a star rating on the feedback (optional)
 Boolean *hasComment = true; // filter based on the existance of a comment on the feedback (optional)
+String *timestampStart = timestampStart_example; // filter to get feedback that occured on an order taken after this start timestamp (optional)
+String *timestampEmd = timestampEmd_example; // filter to get feedback that occured on an order taken before this end timestamp (optional)
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
 // searches all feedback
-[apiInstance searchFeedbackWith:restaurantId
+[apiInstance fetchFeedbackWith:restaurantId
     orderId:orderId
     menuItemId:menuItemId
     serverId:serverId
@@ -890,6 +976,8 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
     starRatingValue:starRatingValue
     hasStarRating:hasStarRating
     hasComment:hasComment
+    timestampStart:timestampStart
+    timestampEmd:timestampEmd
               completionHandler: ^(array[Feedback] output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -901,7 +989,7 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-searchFeedback-0-javascript">
+                            <div class="tab-pane" id="examples-Default-fetchFeedback-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var GrazeAnalytics = require('graze_analytics');
 
 var api = new GrazeAnalytics.DefaultApi()
@@ -916,7 +1004,9 @@ var opts = {
   'tableId': 56, // {Integer} filter by table id number
   'starRatingValue': 56, // {Integer} filter by rating number
   'hasStarRating': true, // {Boolean} filter based on the existance of a star rating on the feedback
-  'hasComment': true // {Boolean} filter based on the existance of a comment on the feedback
+  'hasComment': true, // {Boolean} filter based on the existance of a comment on the feedback
+  'timestampStart': timestampStart_example, // {String} filter to get feedback that occured on an order taken after this start timestamp
+  'timestampEmd': timestampEmd_example // {String} filter to get feedback that occured on an order taken before this end timestamp
 };
 
 var callback = function(error, data, response) {
@@ -926,14 +1016,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.searchFeedback(restaurantId, opts, callback);
+api.fetchFeedback(restaurantId, opts, callback);
 </code></pre>
                             </div>
 
-                            <!--<div class="tab-pane" id="examples-Default-searchFeedback-0-angular">
+                            <!--<div class="tab-pane" id="examples-Default-fetchFeedback-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-Default-searchFeedback-0-csharp">
+                            <div class="tab-pane" id="examples-Default-fetchFeedback-0-csharp">
                               <pre class="prettyprint"><code class="language-cs">using System;
 using System.Diagnostics;
 using IO.Swagger.Api;
@@ -942,7 +1032,7 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class searchFeedbackExample
+    public class fetchFeedbackExample
     {
         public void main()
         {
@@ -957,16 +1047,18 @@ namespace Example
             var starRatingValue = 56;  // Integer | filter by rating number (optional) 
             var hasStarRating = true;  // Boolean | filter based on the existance of a star rating on the feedback (optional) 
             var hasComment = true;  // Boolean | filter based on the existance of a comment on the feedback (optional) 
+            var timestampStart = timestampStart_example;  // String | filter to get feedback that occured on an order taken after this start timestamp (optional) 
+            var timestampEmd = timestampEmd_example;  // String | filter to get feedback that occured on an order taken before this end timestamp (optional) 
 
             try
             {
                 // searches all feedback
-                array[Feedback] result = apiInstance.searchFeedback(restaurantId, orderId, menuItemId, serverId, serverName, tableId, starRatingValue, hasStarRating, hasComment);
+                array[Feedback] result = apiInstance.fetchFeedback(restaurantId, orderId, menuItemId, serverId, serverName, tableId, starRatingValue, hasStarRating, hasComment, timestampStart, timestampEmd);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DefaultApi.searchFeedback: " + e.Message );
+                Debug.Print("Exception when calling DefaultApi.fetchFeedback: " + e.Message );
             }
         }
     }
@@ -974,7 +1066,7 @@ namespace Example
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-searchFeedback-0-php">
+                            <div class="tab-pane" id="examples-Default-fetchFeedback-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
@@ -988,17 +1080,19 @@ $tableId = 56; // Integer | filter by table id number
 $starRatingValue = 56; // Integer | filter by rating number
 $hasStarRating = true; // Boolean | filter based on the existance of a star rating on the feedback
 $hasComment = true; // Boolean | filter based on the existance of a comment on the feedback
+$timestampStart = timestampStart_example; // String | filter to get feedback that occured on an order taken after this start timestamp
+$timestampEmd = timestampEmd_example; // String | filter to get feedback that occured on an order taken before this end timestamp
 
 try {
-    $result = $api_instance->searchFeedback($restaurantId, $orderId, $menuItemId, $serverId, $serverName, $tableId, $starRatingValue, $hasStarRating, $hasComment);
+    $result = $api_instance->fetchFeedback($restaurantId, $orderId, $menuItemId, $serverId, $serverName, $tableId, $starRatingValue, $hasStarRating, $hasComment, $timestampStart, $timestampEmd);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->searchFeedback: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DefaultApi->fetchFeedback: ', $e->getMessage(), PHP_EOL;
 }
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-searchFeedback-0-perl">
+                            <div class="tab-pane" id="examples-Default-fetchFeedback-0-perl">
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::DefaultApi;
@@ -1013,17 +1107,19 @@ my $tableId = 56; # Integer | filter by table id number
 my $starRatingValue = 56; # Integer | filter by rating number
 my $hasStarRating = true; # Boolean | filter based on the existance of a star rating on the feedback
 my $hasComment = true; # Boolean | filter based on the existance of a comment on the feedback
+my $timestampStart = timestampStart_example; # String | filter to get feedback that occured on an order taken after this start timestamp
+my $timestampEmd = timestampEmd_example; # String | filter to get feedback that occured on an order taken before this end timestamp
 
 eval { 
-    my $result = $api_instance->searchFeedback(restaurantId => $restaurantId, orderId => $orderId, menuItemId => $menuItemId, serverId => $serverId, serverName => $serverName, tableId => $tableId, starRatingValue => $starRatingValue, hasStarRating => $hasStarRating, hasComment => $hasComment);
+    my $result = $api_instance->fetchFeedback(restaurantId => $restaurantId, orderId => $orderId, menuItemId => $menuItemId, serverId => $serverId, serverName => $serverName, tableId => $tableId, starRatingValue => $starRatingValue, hasStarRating => $hasStarRating, hasComment => $hasComment, timestampStart => $timestampStart, timestampEmd => $timestampEmd);
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling DefaultApi->searchFeedback: $@\n";
+    warn "Exception when calling DefaultApi->fetchFeedback: $@\n";
 }</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-searchFeedback-0-python">
+                            <div class="tab-pane" id="examples-Default-fetchFeedback-0-python">
                               <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
 import time
 import swagger_client
@@ -1041,13 +1137,15 @@ tableId = 56 # Integer | filter by table id number (optional)
 starRatingValue = 56 # Integer | filter by rating number (optional)
 hasStarRating = true # Boolean | filter based on the existance of a star rating on the feedback (optional)
 hasComment = true # Boolean | filter based on the existance of a comment on the feedback (optional)
+timestampStart = timestampStart_example # String | filter to get feedback that occured on an order taken after this start timestamp (optional)
+timestampEmd = timestampEmd_example # String | filter to get feedback that occured on an order taken before this end timestamp (optional)
 
 try: 
     # searches all feedback
-    api_response = api_instance.search_feedback(restaurantId, orderId=orderId, menuItemId=menuItemId, serverId=serverId, serverName=serverName, tableId=tableId, starRatingValue=starRatingValue, hasStarRating=hasStarRating, hasComment=hasComment)
+    api_response = api_instance.fetch_feedback(restaurantId, orderId=orderId, menuItemId=menuItemId, serverId=serverId, serverName=serverName, tableId=tableId, starRatingValue=starRatingValue, hasStarRating=hasStarRating, hasComment=hasComment, timestampStart=timestampStart, timestampEmd=timestampEmd)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling DefaultApi->searchFeedback: %s\n" % e)</code></pre>
+    print("Exception when calling DefaultApi->fetchFeedback: %s\n" % e)</code></pre>
                             </div>
                           </div>
 
@@ -1067,7 +1165,7 @@ except ApiException as e:
 <td>
 
 
-    <div id="d2e199_searchFeedback_restaurantId">
+    <div id="d2e199_fetchFeedback_restaurantId">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -1090,7 +1188,7 @@ except ApiException as e:
 <td>
 
 
-    <div id="d2e199_searchFeedback_orderId">
+    <div id="d2e199_fetchFeedback_orderId">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -1110,7 +1208,7 @@ except ApiException as e:
 <td>
 
 
-    <div id="d2e199_searchFeedback_menuItemId">
+    <div id="d2e199_fetchFeedback_menuItemId">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -1130,7 +1228,7 @@ except ApiException as e:
 <td>
 
 
-    <div id="d2e199_searchFeedback_serverId">
+    <div id="d2e199_fetchFeedback_serverId">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -1150,7 +1248,7 @@ except ApiException as e:
 <td>
 
 
-    <div id="d2e199_searchFeedback_serverName">
+    <div id="d2e199_fetchFeedback_serverName">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -1170,7 +1268,7 @@ except ApiException as e:
 <td>
 
 
-    <div id="d2e199_searchFeedback_tableId">
+    <div id="d2e199_fetchFeedback_tableId">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -1190,7 +1288,7 @@ except ApiException as e:
 <td>
 
 
-    <div id="d2e199_searchFeedback_starRatingValue">
+    <div id="d2e199_fetchFeedback_starRatingValue">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -1210,7 +1308,7 @@ except ApiException as e:
 <td>
 
 
-    <div id="d2e199_searchFeedback_hasStarRating">
+    <div id="d2e199_fetchFeedback_hasStarRating">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -1230,7 +1328,7 @@ except ApiException as e:
 <td>
 
 
-    <div id="d2e199_searchFeedback_hasComment">
+    <div id="d2e199_fetchFeedback_hasComment">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -1246,6 +1344,46 @@ except ApiException as e:
 </td>
 </tr>
 
+                                <tr><td style="width:150px;">timestamp_start</td>
+<td>
+
+
+    <div id="d2e199_fetchFeedback_timestampStart">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description">
+                        filter to get feedback that occured on an order taken after this start timestamp
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">timestamp_emd</td>
+<td>
+
+
+    <div id="d2e199_fetchFeedback_timestampEmd">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description">
+                        filter to get feedback that occured on an order taken before this end timestamp
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                             </table>
 
                           <h2>Responses</h2>
@@ -1253,14 +1391,14 @@ except ApiException as e:
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-searchFeedback-200-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-fetchFeedback-200-schema">Schema</a>
                                 </li>
 
                             </ul>
 
                             <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-searchFeedback-200-schema">
-                                  <div id='responses-searchFeedback-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                <div class="tab-pane active" id="responses-fetchFeedback-200-schema">
+                                  <div id='responses-fetchFeedback-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
@@ -1284,18 +1422,1490 @@ except ApiException as e:
 
                                         //console.log(JSON.stringify(schema));
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-searchFeedback-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-searchFeedback-200-schema-200');
+                                        $('#responses-fetchFeedback-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-fetchFeedback-200-schema-200');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-searchFeedback-200-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-fetchFeedback-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 204 - no results match given criteria </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 400 - bad input parameter </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Default-fetchMenuItems">
+                      <article id="api-Default-fetchMenuItems-0" data-group="User" data-name="fetchMenuItems" data-version="0">
+                        <div class="pull-left">
+                          <h1>fetchMenuItems</h1>
+                          <p>retrieve all menu items</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">A query to fetch all the menu items</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/MenuItems</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Default-fetchMenuItems-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-fetchMenuItems-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-fetchMenuItems-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-fetchMenuItems-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-fetchMenuItems-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-fetchMenuItems-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-fetchMenuItems-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-fetchMenuItems-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-fetchMenuItems-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-fetchMenuItems-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-fetchMenuItems-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Default-fetchMenuItems-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost/MenuItems?restaurantId="</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Default-fetchMenuItems-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        
+        DefaultApi apiInstance = new DefaultApi();
+        Integer restaurantId = 56; // Integer | pass in the restaurantId you'd like menu items of
+        try {
+            array[MenuItems] result = apiInstance.fetchMenuItems(restaurantId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#fetchMenuItems");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Default-fetchMenuItems-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        DefaultApi apiInstance = new DefaultApi();
+        Integer restaurantId = 56; // Integer | pass in the restaurantId you'd like menu items of
+        try {
+            array[MenuItems] result = apiInstance.fetchMenuItems(restaurantId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#fetchMenuItems");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Default-fetchMenuItems-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Default-fetchMenuItems-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Integer *restaurantId = 56; // pass in the restaurantId you'd like menu items of
+
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+// retrieve all menu items
+[apiInstance fetchMenuItemsWith:restaurantId
+              completionHandler: ^(array[MenuItems] output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-fetchMenuItems-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var GrazeAnalytics = require('graze_analytics');
+
+var api = new GrazeAnalytics.DefaultApi()
+
+var restaurantId = 56; // {Integer} pass in the restaurantId you'd like menu items of
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.fetchMenuItems(restaurantId, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Default-fetchMenuItems-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Default-fetchMenuItems-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class fetchMenuItemsExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new DefaultApi();
+            var restaurantId = 56;  // Integer | pass in the restaurantId you'd like menu items of
+
+            try
+            {
+                // retrieve all menu items
+                array[MenuItems] result = apiInstance.fetchMenuItems(restaurantId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.fetchMenuItems: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-fetchMenuItems-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api\DefaultApi();
+$restaurantId = 56; // Integer | pass in the restaurantId you'd like menu items of
+
+try {
+    $result = $api_instance->fetchMenuItems($restaurantId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->fetchMenuItems: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-fetchMenuItems-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::DefaultApi;
+
+my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $restaurantId = 56; # Integer | pass in the restaurantId you'd like menu items of
+
+eval { 
+    my $result = $api_instance->fetchMenuItems(restaurantId => $restaurantId);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->fetchMenuItems: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-fetchMenuItems-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+restaurantId = 56 # Integer | pass in the restaurantId you'd like menu items of
+
+try: 
+    # retrieve all menu items
+    api_response = api_instance.fetch_menu_items(restaurantId)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->fetchMenuItems: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">restaurantId*</td>
+<td>
+
+
+    <div id="d2e199_fetchMenuItems_restaurantId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+                    <div class="inner description">
+                        pass in the restaurantId you&#39;d like menu items of
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - all menu items </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-fetchMenuItems-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-fetchMenuItems-200-schema">
+                                  <div id='responses-fetchMenuItems-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "all menu items",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/MenuItems"
+    }
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = defs;
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-fetchMenuItems-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-fetchMenuItems-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-fetchMenuItems-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Default-fetchOrders">
+                      <article id="api-Default-fetchOrders-0" data-group="User" data-name="fetchOrders" data-version="0">
+                        <div class="pull-left">
+                          <h1>fetchOrders</h1>
+                          <p>Retrieve orders</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">A filter style query of all orders in the system.</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/orders</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Default-fetchOrders-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-fetchOrders-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-fetchOrders-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-fetchOrders-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-fetchOrders-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-fetchOrders-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-fetchOrders-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-fetchOrders-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-fetchOrders-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-fetchOrders-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-fetchOrders-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Default-fetchOrders-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost/orders?restaurantId=&serverId=&tableId="</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Default-fetchOrders-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        
+        DefaultApi apiInstance = new DefaultApi();
+        Integer restaurantId = 56; // Integer | pass in the restaurant id that you'd like orders for
+        Integer serverId = 56; // Integer | pass in the server id that you'd like orders regarding
+        Integer tableId = 56; // Integer | pass in the table id that you'd like orders regarding
+        try {
+            array[Orders] result = apiInstance.fetchOrders(restaurantId, serverId, tableId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#fetchOrders");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Default-fetchOrders-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        DefaultApi apiInstance = new DefaultApi();
+        Integer restaurantId = 56; // Integer | pass in the restaurant id that you'd like orders for
+        Integer serverId = 56; // Integer | pass in the server id that you'd like orders regarding
+        Integer tableId = 56; // Integer | pass in the table id that you'd like orders regarding
+        try {
+            array[Orders] result = apiInstance.fetchOrders(restaurantId, serverId, tableId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#fetchOrders");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Default-fetchOrders-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Default-fetchOrders-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Integer *restaurantId = 56; // pass in the restaurant id that you'd like orders for
+Integer *serverId = 56; // pass in the server id that you'd like orders regarding (optional)
+Integer *tableId = 56; // pass in the table id that you'd like orders regarding (optional)
+
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+// Retrieve orders
+[apiInstance fetchOrdersWith:restaurantId
+    serverId:serverId
+    tableId:tableId
+              completionHandler: ^(array[Orders] output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-fetchOrders-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var GrazeAnalytics = require('graze_analytics');
+
+var api = new GrazeAnalytics.DefaultApi()
+
+var restaurantId = 56; // {Integer} pass in the restaurant id that you'd like orders for
+
+var opts = { 
+  'serverId': 56, // {Integer} pass in the server id that you'd like orders regarding
+  'tableId': 56 // {Integer} pass in the table id that you'd like orders regarding
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.fetchOrders(restaurantId, opts, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Default-fetchOrders-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Default-fetchOrders-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class fetchOrdersExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new DefaultApi();
+            var restaurantId = 56;  // Integer | pass in the restaurant id that you'd like orders for
+            var serverId = 56;  // Integer | pass in the server id that you'd like orders regarding (optional) 
+            var tableId = 56;  // Integer | pass in the table id that you'd like orders regarding (optional) 
+
+            try
+            {
+                // Retrieve orders
+                array[Orders] result = apiInstance.fetchOrders(restaurantId, serverId, tableId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.fetchOrders: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-fetchOrders-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api\DefaultApi();
+$restaurantId = 56; // Integer | pass in the restaurant id that you'd like orders for
+$serverId = 56; // Integer | pass in the server id that you'd like orders regarding
+$tableId = 56; // Integer | pass in the table id that you'd like orders regarding
+
+try {
+    $result = $api_instance->fetchOrders($restaurantId, $serverId, $tableId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->fetchOrders: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-fetchOrders-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::DefaultApi;
+
+my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $restaurantId = 56; # Integer | pass in the restaurant id that you'd like orders for
+my $serverId = 56; # Integer | pass in the server id that you'd like orders regarding
+my $tableId = 56; # Integer | pass in the table id that you'd like orders regarding
+
+eval { 
+    my $result = $api_instance->fetchOrders(restaurantId => $restaurantId, serverId => $serverId, tableId => $tableId);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->fetchOrders: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-fetchOrders-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+restaurantId = 56 # Integer | pass in the restaurant id that you'd like orders for
+serverId = 56 # Integer | pass in the server id that you'd like orders regarding (optional)
+tableId = 56 # Integer | pass in the table id that you'd like orders regarding (optional)
+
+try: 
+    # Retrieve orders
+    api_response = api_instance.fetch_orders(restaurantId, serverId=serverId, tableId=tableId)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->fetchOrders: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">restaurantId*</td>
+<td>
+
+
+    <div id="d2e199_fetchOrders_restaurantId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+                    <div class="inner description">
+                        pass in the restaurant id that you&#39;d like orders for
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">serverId</td>
+<td>
+
+
+    <div id="d2e199_fetchOrders_serverId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+                    <div class="inner description">
+                        pass in the server id that you&#39;d like orders regarding
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">tableId</td>
+<td>
+
+
+    <div id="d2e199_fetchOrders_tableId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+                    <div class="inner description">
+                        pass in the table id that you&#39;d like orders regarding
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - search results matching criteria </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-fetchOrders-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-fetchOrders-200-schema">
+                                  <div id='responses-fetchOrders-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "search results matching criteria",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/Orders"
+    }
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = defs;
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-fetchOrders-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-fetchOrders-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-fetchOrders-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 
                             <h3> Status: 400 - bad input parameter </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Default-fetchServers">
+                      <article id="api-Default-fetchServers-0" data-group="User" data-name="fetchServers" data-version="0">
+                        <div class="pull-left">
+                          <h1>fetchServers</h1>
+                          <p>retrieve all servers</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">A query to fetch all the servers</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/Servers</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Default-fetchServers-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-fetchServers-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-fetchServers-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-fetchServers-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-fetchServers-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-fetchServers-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-fetchServers-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-fetchServers-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-fetchServers-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-fetchServers-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-fetchServers-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Default-fetchServers-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost/Servers?restaurantId="</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Default-fetchServers-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        
+        DefaultApi apiInstance = new DefaultApi();
+        Integer restaurantId = 56; // Integer | pass in the restaurantId you'd like the servers of
+        try {
+            array[Servers] result = apiInstance.fetchServers(restaurantId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#fetchServers");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Default-fetchServers-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        DefaultApi apiInstance = new DefaultApi();
+        Integer restaurantId = 56; // Integer | pass in the restaurantId you'd like the servers of
+        try {
+            array[Servers] result = apiInstance.fetchServers(restaurantId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#fetchServers");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Default-fetchServers-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Default-fetchServers-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Integer *restaurantId = 56; // pass in the restaurantId you'd like the servers of
+
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+// retrieve all servers
+[apiInstance fetchServersWith:restaurantId
+              completionHandler: ^(array[Servers] output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-fetchServers-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var GrazeAnalytics = require('graze_analytics');
+
+var api = new GrazeAnalytics.DefaultApi()
+
+var restaurantId = 56; // {Integer} pass in the restaurantId you'd like the servers of
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.fetchServers(restaurantId, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Default-fetchServers-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Default-fetchServers-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class fetchServersExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new DefaultApi();
+            var restaurantId = 56;  // Integer | pass in the restaurantId you'd like the servers of
+
+            try
+            {
+                // retrieve all servers
+                array[Servers] result = apiInstance.fetchServers(restaurantId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.fetchServers: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-fetchServers-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api\DefaultApi();
+$restaurantId = 56; // Integer | pass in the restaurantId you'd like the servers of
+
+try {
+    $result = $api_instance->fetchServers($restaurantId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->fetchServers: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-fetchServers-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::DefaultApi;
+
+my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $restaurantId = 56; # Integer | pass in the restaurantId you'd like the servers of
+
+eval { 
+    my $result = $api_instance->fetchServers(restaurantId => $restaurantId);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->fetchServers: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-fetchServers-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+restaurantId = 56 # Integer | pass in the restaurantId you'd like the servers of
+
+try: 
+    # retrieve all servers
+    api_response = api_instance.fetch_servers(restaurantId)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->fetchServers: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">restaurantId*</td>
+<td>
+
+
+    <div id="d2e199_fetchServers_restaurantId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+                    <div class="inner description">
+                        pass in the restaurantId you&#39;d like the servers of
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - all servers </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-fetchServers-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-fetchServers-200-schema">
+                                  <div id='responses-fetchServers-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "all servers",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/Servers"
+    }
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = defs;
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-fetchServers-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-fetchServers-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-fetchServers-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Default-fetchTables">
+                      <article id="api-Default-fetchTables-0" data-group="User" data-name="fetchTables" data-version="0">
+                        <div class="pull-left">
+                          <h1>fetchTables</h1>
+                          <p>retrieve all tables</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">A query to fetch all the tables</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/Tables</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Default-fetchTables-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-fetchTables-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-fetchTables-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-fetchTables-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-fetchTables-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-fetchTables-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-fetchTables-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-fetchTables-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-fetchTables-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-fetchTables-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-fetchTables-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Default-fetchTables-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost/Tables?restaurantId="</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Default-fetchTables-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        
+        DefaultApi apiInstance = new DefaultApi();
+        Integer restaurantId = 56; // Integer | pass in the restaurantId you'd like tables of
+        try {
+            array[Tables] result = apiInstance.fetchTables(restaurantId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#fetchTables");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Default-fetchTables-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        DefaultApi apiInstance = new DefaultApi();
+        Integer restaurantId = 56; // Integer | pass in the restaurantId you'd like tables of
+        try {
+            array[Tables] result = apiInstance.fetchTables(restaurantId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#fetchTables");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Default-fetchTables-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Default-fetchTables-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Integer *restaurantId = 56; // pass in the restaurantId you'd like tables of
+
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+// retrieve all tables
+[apiInstance fetchTablesWith:restaurantId
+              completionHandler: ^(array[Tables] output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-fetchTables-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var GrazeAnalytics = require('graze_analytics');
+
+var api = new GrazeAnalytics.DefaultApi()
+
+var restaurantId = 56; // {Integer} pass in the restaurantId you'd like tables of
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.fetchTables(restaurantId, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Default-fetchTables-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Default-fetchTables-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class fetchTablesExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new DefaultApi();
+            var restaurantId = 56;  // Integer | pass in the restaurantId you'd like tables of
+
+            try
+            {
+                // retrieve all tables
+                array[Tables] result = apiInstance.fetchTables(restaurantId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.fetchTables: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-fetchTables-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api\DefaultApi();
+$restaurantId = 56; // Integer | pass in the restaurantId you'd like tables of
+
+try {
+    $result = $api_instance->fetchTables($restaurantId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->fetchTables: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-fetchTables-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::DefaultApi;
+
+my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $restaurantId = 56; # Integer | pass in the restaurantId you'd like tables of
+
+eval { 
+    my $result = $api_instance->fetchTables(restaurantId => $restaurantId);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->fetchTables: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-fetchTables-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+restaurantId = 56 # Integer | pass in the restaurantId you'd like tables of
+
+try: 
+    # retrieve all tables
+    api_response = api_instance.fetch_tables(restaurantId)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->fetchTables: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">restaurantId*</td>
+<td>
+
+
+    <div id="d2e199_fetchTables_restaurantId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+                    <div class="inner description">
+                        pass in the restaurantId you&#39;d like tables of
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - all tables in restaurant </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-fetchTables-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-fetchTables-200-schema">
+                                  <div id='responses-fetchTables-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "all tables in restaurant",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/Tables"
+    }
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = defs;
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-fetchTables-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-fetchTables-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-fetchTables-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Default-loginPost">
+                      <article id="api-Default-loginPost-0" data-group="User" data-name="loginPost" data-version="0">
+                        <div class="pull-left">
+                          <h1>loginPost</h1>
+                          <p>TODO. A login will involve posting a login attempt to this route and receiving a JWT in return.</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/login</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Default-loginPost-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-loginPost-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-loginPost-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-loginPost-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-loginPost-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-loginPost-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-loginPost-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-loginPost-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-loginPost-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-loginPost-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-loginPost-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Default-loginPost-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST "https://localhost/login"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Default-loginPost-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        
+        DefaultApi apiInstance = new DefaultApi();
+        try {
+            apiInstance.loginPost();
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#loginPost");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Default-loginPost-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        DefaultApi apiInstance = new DefaultApi();
+        try {
+            apiInstance.loginPost();
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#loginPost");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Default-loginPost-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Default-loginPost-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+// TODO. A login will involve posting a login attempt to this route and receiving a JWT in return.
+[apiInstance loginPostWithCompletionHandler: 
+              ^(NSError* error) {
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-loginPost-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var GrazeAnalytics = require('graze_analytics');
+
+var api = new GrazeAnalytics.DefaultApi()
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.loginPost(callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Default-loginPost-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Default-loginPost-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class loginPostExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new DefaultApi();
+
+            try
+            {
+                // TODO. A login will involve posting a login attempt to this route and receiving a JWT in return.
+                apiInstance.loginPost();
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.loginPost: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-loginPost-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api\DefaultApi();
+
+try {
+    $api_instance->loginPost();
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->loginPost: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-loginPost-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::DefaultApi;
+
+my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+
+eval { 
+    $api_instance->loginPost();
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->loginPost: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-loginPost-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+
+try: 
+    # TODO. A login will involve posting a login attempt to this route and receiving a JWT in return.
+    api_instance.login_post()
+except ApiException as e:
+    print("Exception when calling DefaultApi->loginPost: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 201 - {JWT} </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                            <h3> Status: 400 - Invalid Login </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                             </ul>

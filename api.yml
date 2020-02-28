@@ -16,9 +16,8 @@ paths:
   /feedback:
     get:
       summary: searches all feedback
-      operationId: searchFeedback
-      description: |
-        A filter style query of all collected feedback in the system.
+      operationId: fetchFeedback
+      description: A filter style query of all collected feedback in the system.
       produces:
       - application/json
       parameters:
@@ -47,7 +46,6 @@ paths:
         description: attempt to filter by server name
         required: false
         type: integer
-        ## TODO: Server table route for populating name suggestions
       - in: query
         name: tableId
         description: filter by table id number
@@ -68,6 +66,16 @@ paths:
         description: filter based on the existance of a comment on the feedback
         required: false
         type: boolean
+      - in: query
+        name: timestamp_start
+        description: filter to get feedback that occured on an order taken after this start timestamp
+        required: false
+        type: string
+      - in: query
+        name: timestamp_emd
+        description: filter to get feedback that occured on an order taken before this end timestamp
+        required: false
+        type: string
         
       responses:
         200:
@@ -76,31 +84,132 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Feedback'
+        204:
+          description: no results match given criteria
         400:
           description: bad input parameter
     # post:
-    #   tags:
-    #   - admins
-    #   summary: adds an inventory item
-    #   operationId: addInventory
-    #   description: Adds an item to the system
+    #   summary: creates a piece of feedback
+    #   operationId: addFeedback
+    #   description: "requires: 1) both a restaurant_id and order_id 2) One of three: menu_item_id server_id table_id 3) star_rating or(/and) comment."
     #   consumes:
     #   - application/json
     #   produces:
     #   - application/json
     #   parameters:
     #   - in: body
-    #     name: inventoryItem
-    #     description: Inventory item to add
+    #     name: Feedback
+    #     description: Feedback item to add
     #     schema:
-    #       $ref: '#/definitions/InventoryItem'
+    #       $ref: '#/definitions/Feedback'
     #   responses:
     #     201:
-    #       description: item created
+    #       description: Feedback created
     #     400:
-    #       description: invalid input, object invalid
-    #     409:
-    #       description: an existing item already exists
+    #       description: "Feedback object invalid (missing: ___ )"
+  /orders:
+    get:
+      summary: Retrieve orders
+      operationId: fetchOrders
+      description: A filter style query of all orders in the system.
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: restaurantId
+        description: pass in the restaurant id that you'd like orders for
+        required: true
+        type: integer
+      - in: query
+        name: serverId
+        description: pass in the server id that you'd like orders regarding
+        required: false
+        type: integer
+      - in: query
+        name: tableId
+        description: pass in the table id that you'd like orders regarding
+        required: false
+        type: integer
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Orders'
+        400:
+          description: bad input parameter
+  /Servers:
+    get:
+      summary: retrieve all servers
+      operationId: fetchServers
+      description: A query to fetch all the servers
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: restaurantId
+        description: pass in the restaurantId you'd like the servers of
+        required: true
+        type: integer
+      responses:
+        200:
+          description: all servers
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Servers'
+  /MenuItems:
+    get:
+      summary: retrieve all menu items
+      operationId: fetchMenuItems
+      description: A query to fetch all the menu items
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: restaurantId
+        description: pass in the restaurantId you'd like menu items of
+        required: true
+        type: integer
+      responses:
+       200:
+        description: all menu items
+        schema:
+          type: array
+          items:
+            $ref: '#/definitions/MenuItems'
+  /Tables:
+    get:
+      summary: retrieve all tables
+      operationId: fetchTables
+      description: A query to fetch all the tables
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: restaurantId
+        description: pass in the restaurantId you'd like tables of
+        required: true
+        type: integer
+      responses:
+        200:
+          description: all tables in restaurant
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Tables'
+  
+  # /Restaurants:
+  # Screen 9 on XD questions
+  /login:
+    post:
+      summary: "TODO. A login will involve posting a login attempt to this route and receiving a JWT in return."
+      responses:
+        201:
+          description: "{JWT}"
+        400:
+          description: Invalid Login 
 
 definitions:
   Feedback:
@@ -127,3 +236,59 @@ definitions:
       comment:
         type: string
         example: "Service was great!"
+  Orders:
+    required:
+    - id
+    - restaurant_id
+    - server_id
+    - table_id
+    - time_completed
+    properties:
+      id:
+        type: integer
+      restaurant_id:
+        type: integer
+      server_id:
+        type: integer
+      table_id:
+        type: integer
+      time_completed:
+        type: string
+  Tables:
+    required:
+    - id
+    - restaurant_id
+    properties:
+      id:
+        type: integer
+      restaurant_id:
+        type: integer
+      description:
+        type: string
+        example: "Booth by the streetside window"
+  Servers:
+    required:
+    - id
+    - restaurant_id
+    - f_name
+    properties:
+      id:
+        type: integer
+      restaurant_id:
+        type: integer
+      f_name:
+        type: string
+      l_name:
+        type: string
+  MenuItems:
+    required:
+    - id
+    - restaurant_id
+    - title
+    properties:
+      id:
+        type: integer
+      restaurant_id:
+        type: integer
+      title:
+        type: string
