@@ -881,7 +881,7 @@ margin-bottom: 20px;
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Default-fetchFeedback-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost/feedback?restaurantId=&orderId=&menuItemId=&serverId=&serverName=&tableId=&starRatingValue=&hasStarRating=&hasComment=&timestamp_start=&timestamp_emd="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost/feedback?restaurantId=&orderId=&menuItemId=&serverId=&serverName=&tableId=&starRatingValue=&hasStarRating=&hasComment=&timestampStart=&timestampEnd="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-fetchFeedback-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -907,9 +907,9 @@ public class DefaultApiExample {
         Boolean hasStarRating = true; // Boolean | filter based on the existance of a star rating on the feedback
         Boolean hasComment = true; // Boolean | filter based on the existance of a comment on the feedback
         String timestampStart = timestampStart_example; // String | filter to get feedback that occured on an order taken after this start timestamp
-        String timestampEmd = timestampEmd_example; // String | filter to get feedback that occured on an order taken before this end timestamp
+        String timestampEnd = timestampEnd_example; // String | filter to get feedback that occured on an order taken before this end timestamp
         try {
-            array[Feedback] result = apiInstance.fetchFeedback(restaurantId, orderId, menuItemId, serverId, serverName, tableId, starRatingValue, hasStarRating, hasComment, timestampStart, timestampEmd);
+            array[Feedback] result = apiInstance.fetchFeedback(restaurantId, orderId, menuItemId, serverId, serverName, tableId, starRatingValue, hasStarRating, hasComment, timestampStart, timestampEnd);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#fetchFeedback");
@@ -936,9 +936,9 @@ public class DefaultApiExample {
         Boolean hasStarRating = true; // Boolean | filter based on the existance of a star rating on the feedback
         Boolean hasComment = true; // Boolean | filter based on the existance of a comment on the feedback
         String timestampStart = timestampStart_example; // String | filter to get feedback that occured on an order taken after this start timestamp
-        String timestampEmd = timestampEmd_example; // String | filter to get feedback that occured on an order taken before this end timestamp
+        String timestampEnd = timestampEnd_example; // String | filter to get feedback that occured on an order taken before this end timestamp
         try {
-            array[Feedback] result = apiInstance.fetchFeedback(restaurantId, orderId, menuItemId, serverId, serverName, tableId, starRatingValue, hasStarRating, hasComment, timestampStart, timestampEmd);
+            array[Feedback] result = apiInstance.fetchFeedback(restaurantId, orderId, menuItemId, serverId, serverName, tableId, starRatingValue, hasStarRating, hasComment, timestampStart, timestampEnd);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#fetchFeedback");
@@ -962,7 +962,7 @@ Integer *starRatingValue = 56; // filter by rating number (optional)
 Boolean *hasStarRating = true; // filter based on the existance of a star rating on the feedback (optional)
 Boolean *hasComment = true; // filter based on the existance of a comment on the feedback (optional)
 String *timestampStart = timestampStart_example; // filter to get feedback that occured on an order taken after this start timestamp (optional)
-String *timestampEmd = timestampEmd_example; // filter to get feedback that occured on an order taken before this end timestamp (optional)
+String *timestampEnd = timestampEnd_example; // filter to get feedback that occured on an order taken before this end timestamp (optional)
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
@@ -977,7 +977,7 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
     hasStarRating:hasStarRating
     hasComment:hasComment
     timestampStart:timestampStart
-    timestampEmd:timestampEmd
+    timestampEnd:timestampEnd
               completionHandler: ^(array[Feedback] output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -1006,7 +1006,7 @@ var opts = {
   'hasStarRating': true, // {Boolean} filter based on the existance of a star rating on the feedback
   'hasComment': true, // {Boolean} filter based on the existance of a comment on the feedback
   'timestampStart': timestampStart_example, // {String} filter to get feedback that occured on an order taken after this start timestamp
-  'timestampEmd': timestampEmd_example // {String} filter to get feedback that occured on an order taken before this end timestamp
+  'timestampEnd': timestampEnd_example // {String} filter to get feedback that occured on an order taken before this end timestamp
 };
 
 var callback = function(error, data, response) {
@@ -1048,12 +1048,12 @@ namespace Example
             var hasStarRating = true;  // Boolean | filter based on the existance of a star rating on the feedback (optional) 
             var hasComment = true;  // Boolean | filter based on the existance of a comment on the feedback (optional) 
             var timestampStart = timestampStart_example;  // String | filter to get feedback that occured on an order taken after this start timestamp (optional) 
-            var timestampEmd = timestampEmd_example;  // String | filter to get feedback that occured on an order taken before this end timestamp (optional) 
+            var timestampEnd = timestampEnd_example;  // String | filter to get feedback that occured on an order taken before this end timestamp (optional) 
 
             try
             {
                 // searches all feedback
-                array[Feedback] result = apiInstance.fetchFeedback(restaurantId, orderId, menuItemId, serverId, serverName, tableId, starRatingValue, hasStarRating, hasComment, timestampStart, timestampEmd);
+                array[Feedback] result = apiInstance.fetchFeedback(restaurantId, orderId, menuItemId, serverId, serverName, tableId, starRatingValue, hasStarRating, hasComment, timestampStart, timestampEnd);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1081,10 +1081,10 @@ $starRatingValue = 56; // Integer | filter by rating number
 $hasStarRating = true; // Boolean | filter based on the existance of a star rating on the feedback
 $hasComment = true; // Boolean | filter based on the existance of a comment on the feedback
 $timestampStart = timestampStart_example; // String | filter to get feedback that occured on an order taken after this start timestamp
-$timestampEmd = timestampEmd_example; // String | filter to get feedback that occured on an order taken before this end timestamp
+$timestampEnd = timestampEnd_example; // String | filter to get feedback that occured on an order taken before this end timestamp
 
 try {
-    $result = $api_instance->fetchFeedback($restaurantId, $orderId, $menuItemId, $serverId, $serverName, $tableId, $starRatingValue, $hasStarRating, $hasComment, $timestampStart, $timestampEmd);
+    $result = $api_instance->fetchFeedback($restaurantId, $orderId, $menuItemId, $serverId, $serverName, $tableId, $starRatingValue, $hasStarRating, $hasComment, $timestampStart, $timestampEnd);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->fetchFeedback: ', $e->getMessage(), PHP_EOL;
@@ -1108,10 +1108,10 @@ my $starRatingValue = 56; # Integer | filter by rating number
 my $hasStarRating = true; # Boolean | filter based on the existance of a star rating on the feedback
 my $hasComment = true; # Boolean | filter based on the existance of a comment on the feedback
 my $timestampStart = timestampStart_example; # String | filter to get feedback that occured on an order taken after this start timestamp
-my $timestampEmd = timestampEmd_example; # String | filter to get feedback that occured on an order taken before this end timestamp
+my $timestampEnd = timestampEnd_example; # String | filter to get feedback that occured on an order taken before this end timestamp
 
 eval { 
-    my $result = $api_instance->fetchFeedback(restaurantId => $restaurantId, orderId => $orderId, menuItemId => $menuItemId, serverId => $serverId, serverName => $serverName, tableId => $tableId, starRatingValue => $starRatingValue, hasStarRating => $hasStarRating, hasComment => $hasComment, timestampStart => $timestampStart, timestampEmd => $timestampEmd);
+    my $result = $api_instance->fetchFeedback(restaurantId => $restaurantId, orderId => $orderId, menuItemId => $menuItemId, serverId => $serverId, serverName => $serverName, tableId => $tableId, starRatingValue => $starRatingValue, hasStarRating => $hasStarRating, hasComment => $hasComment, timestampStart => $timestampStart, timestampEnd => $timestampEnd);
     print Dumper($result);
 };
 if ($@) {
@@ -1138,11 +1138,11 @@ starRatingValue = 56 # Integer | filter by rating number (optional)
 hasStarRating = true # Boolean | filter based on the existance of a star rating on the feedback (optional)
 hasComment = true # Boolean | filter based on the existance of a comment on the feedback (optional)
 timestampStart = timestampStart_example # String | filter to get feedback that occured on an order taken after this start timestamp (optional)
-timestampEmd = timestampEmd_example # String | filter to get feedback that occured on an order taken before this end timestamp (optional)
+timestampEnd = timestampEnd_example # String | filter to get feedback that occured on an order taken before this end timestamp (optional)
 
 try: 
     # searches all feedback
-    api_response = api_instance.fetch_feedback(restaurantId, orderId=orderId, menuItemId=menuItemId, serverId=serverId, serverName=serverName, tableId=tableId, starRatingValue=starRatingValue, hasStarRating=hasStarRating, hasComment=hasComment, timestampStart=timestampStart, timestampEmd=timestampEmd)
+    api_response = api_instance.fetch_feedback(restaurantId, orderId=orderId, menuItemId=menuItemId, serverId=serverId, serverName=serverName, tableId=tableId, starRatingValue=starRatingValue, hasStarRating=hasStarRating, hasComment=hasComment, timestampStart=timestampStart, timestampEnd=timestampEnd)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->fetchFeedback: %s\n" % e)</code></pre>
@@ -1344,7 +1344,7 @@ except ApiException as e:
 </td>
 </tr>
 
-                                <tr><td style="width:150px;">timestamp_start</td>
+                                <tr><td style="width:150px;">timestampStart</td>
 <td>
 
 
@@ -1364,11 +1364,11 @@ except ApiException as e:
 </td>
 </tr>
 
-                                <tr><td style="width:150px;">timestamp_emd</td>
+                                <tr><td style="width:150px;">timestampEnd</td>
 <td>
 
 
-    <div id="d2e199_fetchFeedback_timestampEmd">
+    <div id="d2e199_fetchFeedback_timestampEnd">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -1464,7 +1464,7 @@ except ApiException as e:
                         <p class="marked">A query to fetch all the menu items</p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/MenuItems</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/menuItems</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -1484,7 +1484,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Default-fetchMenuItems-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost/MenuItems?restaurantId="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost/menuItems?restaurantId="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-fetchMenuItems-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -2151,7 +2151,7 @@ except ApiException as e:
                         <p class="marked">A query to fetch all the servers</p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/Servers</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/servers</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -2171,7 +2171,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Default-fetchServers-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost/Servers?restaurantId="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost/servers?restaurantId="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-fetchServers-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -2446,7 +2446,7 @@ except ApiException as e:
                         <p class="marked">A query to fetch all the tables</p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/Tables</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/tables</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -2466,7 +2466,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Default-fetchTables-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost/Tables?restaurantId="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost/tables?restaurantId="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-fetchTables-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;

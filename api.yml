@@ -67,12 +67,12 @@ paths:
         required: false
         type: boolean
       - in: query
-        name: timestamp_start
+        name: timestampStart
         description: filter to get feedback that occured on an order taken after this start timestamp
         required: false
         type: string
       - in: query
-        name: timestamp_emd
+        name: timestampEnd
         description: filter to get feedback that occured on an order taken before this end timestamp
         required: false
         type: string
@@ -144,7 +144,7 @@ paths:
               $ref: '#/definitions/Orders'
         400:
           description: bad input parameter
-  /Servers:
+  /servers:
     get:
       summary: retrieve all servers
       operationId: fetchServers
@@ -164,7 +164,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Servers'
-  /MenuItems:
+  /menuItems:
     get:
       summary: retrieve all menu items
       operationId: fetchMenuItems
@@ -184,7 +184,7 @@ paths:
           type: array
           items:
             $ref: '#/definitions/MenuItems'
-  /Tables:
+  /tables:
     get:
       summary: retrieve all tables
       operationId: fetchTables
