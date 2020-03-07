@@ -1779,7 +1779,7 @@ except ApiException as e:
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Default-fetchOrders-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost/orders?restaurantId=&serverId=&tableId="</code></pre>
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost/orders?restaurantId=&serverId=&tableId=&limitResults="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Default-fetchOrders-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -1798,8 +1798,9 @@ public class DefaultApiExample {
         Integer restaurantId = 56; // Integer | pass in the restaurant id that you'd like orders for
         Integer serverId = 56; // Integer | pass in the server id that you'd like orders regarding
         Integer tableId = 56; // Integer | pass in the table id that you'd like orders regarding
+        Integer limitResults = 56; // Integer | pass in an integer representing the maximum amount of orders you'd like to receive. (Default 30)
         try {
-            array[Orders] result = apiInstance.fetchOrders(restaurantId, serverId, tableId);
+            array[Orders] result = apiInstance.fetchOrders(restaurantId, serverId, tableId, limitResults);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#fetchOrders");
@@ -1819,8 +1820,9 @@ public class DefaultApiExample {
         Integer restaurantId = 56; // Integer | pass in the restaurant id that you'd like orders for
         Integer serverId = 56; // Integer | pass in the server id that you'd like orders regarding
         Integer tableId = 56; // Integer | pass in the table id that you'd like orders regarding
+        Integer limitResults = 56; // Integer | pass in an integer representing the maximum amount of orders you'd like to receive. (Default 30)
         try {
-            array[Orders] result = apiInstance.fetchOrders(restaurantId, serverId, tableId);
+            array[Orders] result = apiInstance.fetchOrders(restaurantId, serverId, tableId, limitResults);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#fetchOrders");
@@ -1837,6 +1839,7 @@ public class DefaultApiExample {
                               <pre class="prettyprint"><code class="language-cpp">Integer *restaurantId = 56; // pass in the restaurant id that you'd like orders for
 Integer *serverId = 56; // pass in the server id that you'd like orders regarding (optional)
 Integer *tableId = 56; // pass in the table id that you'd like orders regarding (optional)
+Integer *limitResults = 56; // pass in an integer representing the maximum amount of orders you'd like to receive. (Default 30) (optional)
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
@@ -1844,6 +1847,7 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
 [apiInstance fetchOrdersWith:restaurantId
     serverId:serverId
     tableId:tableId
+    limitResults:limitResults
               completionHandler: ^(array[Orders] output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -1864,7 +1868,8 @@ var restaurantId = 56; // {Integer} pass in the restaurant id that you'd like or
 
 var opts = { 
   'serverId': 56, // {Integer} pass in the server id that you'd like orders regarding
-  'tableId': 56 // {Integer} pass in the table id that you'd like orders regarding
+  'tableId': 56, // {Integer} pass in the table id that you'd like orders regarding
+  'limitResults': 56 // {Integer} pass in an integer representing the maximum amount of orders you'd like to receive. (Default 30)
 };
 
 var callback = function(error, data, response) {
@@ -1899,11 +1904,12 @@ namespace Example
             var restaurantId = 56;  // Integer | pass in the restaurant id that you'd like orders for
             var serverId = 56;  // Integer | pass in the server id that you'd like orders regarding (optional) 
             var tableId = 56;  // Integer | pass in the table id that you'd like orders regarding (optional) 
+            var limitResults = 56;  // Integer | pass in an integer representing the maximum amount of orders you'd like to receive. (Default 30) (optional) 
 
             try
             {
                 // Retrieve orders
-                array[Orders] result = apiInstance.fetchOrders(restaurantId, serverId, tableId);
+                array[Orders] result = apiInstance.fetchOrders(restaurantId, serverId, tableId, limitResults);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -1924,9 +1930,10 @@ $api_instance = new Swagger\Client\Api\DefaultApi();
 $restaurantId = 56; // Integer | pass in the restaurant id that you'd like orders for
 $serverId = 56; // Integer | pass in the server id that you'd like orders regarding
 $tableId = 56; // Integer | pass in the table id that you'd like orders regarding
+$limitResults = 56; // Integer | pass in an integer representing the maximum amount of orders you'd like to receive. (Default 30)
 
 try {
-    $result = $api_instance->fetchOrders($restaurantId, $serverId, $tableId);
+    $result = $api_instance->fetchOrders($restaurantId, $serverId, $tableId, $limitResults);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->fetchOrders: ', $e->getMessage(), PHP_EOL;
@@ -1943,9 +1950,10 @@ my $api_instance = WWW::SwaggerClient::DefaultApi->new();
 my $restaurantId = 56; # Integer | pass in the restaurant id that you'd like orders for
 my $serverId = 56; # Integer | pass in the server id that you'd like orders regarding
 my $tableId = 56; # Integer | pass in the table id that you'd like orders regarding
+my $limitResults = 56; # Integer | pass in an integer representing the maximum amount of orders you'd like to receive. (Default 30)
 
 eval { 
-    my $result = $api_instance->fetchOrders(restaurantId => $restaurantId, serverId => $serverId, tableId => $tableId);
+    my $result = $api_instance->fetchOrders(restaurantId => $restaurantId, serverId => $serverId, tableId => $tableId, limitResults => $limitResults);
     print Dumper($result);
 };
 if ($@) {
@@ -1965,10 +1973,11 @@ api_instance = swagger_client.DefaultApi()
 restaurantId = 56 # Integer | pass in the restaurant id that you'd like orders for
 serverId = 56 # Integer | pass in the server id that you'd like orders regarding (optional)
 tableId = 56 # Integer | pass in the table id that you'd like orders regarding (optional)
+limitResults = 56 # Integer | pass in an integer representing the maximum amount of orders you'd like to receive. (Default 30) (optional)
 
 try: 
     # Retrieve orders
-    api_response = api_instance.fetch_orders(restaurantId, serverId=serverId, tableId=tableId)
+    api_response = api_instance.fetch_orders(restaurantId, serverId=serverId, tableId=tableId, limitResults=limitResults)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->fetchOrders: %s\n" % e)</code></pre>
@@ -2050,10 +2059,30 @@ except ApiException as e:
 </td>
 </tr>
 
+                                <tr><td style="width:150px;">limitResults</td>
+<td>
+
+
+    <div id="d2e199_fetchOrders_limitResults">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+                    <div class="inner description">
+                        pass in an integer representing the maximum amount of orders you&#39;d like to receive. (Default 30)
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
                             </table>
 
                           <h2>Responses</h2>
-                            <h3> Status: 200 - search results matching criteria </h3>
+                            <h3> Status: 200 - search results matching criteria, sorted in order of time, with the most recent first </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
@@ -2068,7 +2097,7 @@ except ApiException as e:
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
-  "description" : "search results matching criteria",
+  "description" : "search results matching criteria, sorted in order of time, with the most recent first",
   "schema" : {
     "type" : "array",
     "items" : {

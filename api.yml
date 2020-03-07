@@ -130,9 +130,14 @@ paths:
         description: pass in the table id that you'd like orders regarding
         required: false
         type: integer
+      - in: query
+        name: limitResults
+        description: pass in an integer representing the maximum amount of orders you'd like to receive. (Default 30)
+        required: false
+        type: integer
       responses:
         200:
-          description: search results matching criteria
+          description: search results matching criteria, sorted in order of time, with the most recent first
           schema:
             type: array
             items:
