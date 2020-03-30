@@ -696,37 +696,6 @@ margin-bottom: 20px;
   <script>
     // Script section to load models into a JS Var
     var defs = {}
-        defs["Feedback"] = {
-  "required" : [ "id", "order_id", "restaurant_id" ],
-  "properties" : {
-    "id" : {
-      "type" : "integer"
-    },
-    "restaurant_id" : {
-      "type" : "integer"
-    },
-    "order_id" : {
-      "type" : "integer"
-    },
-    "menu_item_id" : {
-      "type" : "integer"
-    },
-    "server_id" : {
-      "type" : "integer"
-    },
-    "table_id" : {
-      "type" : "integer"
-    },
-    "star_rating" : {
-      "type" : "integer",
-      "example" : 4
-    },
-    "comment" : {
-      "type" : "string",
-      "example" : "Service was great!"
-    }
-  }
-};
         defs["MenuItems"] = {
   "required" : [ "id", "restaurant_id", "title" ],
   "properties" : {
@@ -758,6 +727,37 @@ margin-bottom: 20px;
     },
     "time_completed" : {
       "type" : "string"
+    }
+  }
+};
+        defs["review"] = {
+  "required" : [ "id", "order_id", "restaurant_id" ],
+  "properties" : {
+    "id" : {
+      "type" : "integer"
+    },
+    "restaurant_id" : {
+      "type" : "integer"
+    },
+    "order_id" : {
+      "type" : "integer"
+    },
+    "menu_item_id" : {
+      "type" : "integer"
+    },
+    "server_id" : {
+      "type" : "integer"
+    },
+    "table_id" : {
+      "type" : "integer"
+    },
+    "star_rating" : {
+      "type" : "integer",
+      "example" : 4
+    },
+    "comment" : {
+      "type" : "string",
+      "example" : "Service was great!"
     }
   }
 };
@@ -810,14 +810,14 @@ margin-bottom: 20px;
             <li class="nav-fixed nav-header active" data-group="_"><a href="#api-_">API Summary</a></li>
 
                   <li class="nav-header" data-group="Default"><a href="#api-Default">API Methods - Default</a></li>
-                    <li data-group="Default" data-name="fetchFeedback" class="">
-                      <a href="#api-Default-fetchFeedback">fetchFeedback</a>
-                    </li>
                     <li data-group="Default" data-name="fetchMenuItems" class="">
                       <a href="#api-Default-fetchMenuItems">fetchMenuItems</a>
                     </li>
                     <li data-group="Default" data-name="fetchOrders" class="">
                       <a href="#api-Default-fetchOrders">fetchOrders</a>
+                    </li>
+                    <li data-group="Default" data-name="fetchReviews" class="">
+                      <a href="#api-Default-fetchReviews">fetchReviews</a>
                     </li>
                     <li data-group="Default" data-name="fetchServers" class="">
                       <a href="#api-Default-fetchServers">fetchServers</a>
@@ -849,609 +849,6 @@ margin-bottom: 20px;
         <div id="sections">
                 <section id="api-Default">
                   <h1>Default</h1>
-                    <div id="api-Default-fetchFeedback">
-                      <article id="api-Default-fetchFeedback-0" data-group="User" data-name="fetchFeedback" data-version="0">
-                        <div class="pull-left">
-                          <h1>fetchFeedback</h1>
-                          <p>searches all feedback</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked">A filter style query of all collected feedback in the system.</p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/feedback</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-fetchFeedback-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-fetchFeedback-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-fetchFeedback-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-fetchFeedback-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-fetchFeedback-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-fetchFeedback-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-fetchFeedback-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-fetchFeedback-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-fetchFeedback-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-fetchFeedback-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-fetchFeedback-0-python">Python</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-fetchFeedback-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost/feedback?restaurantId=&orderId=&menuItemId=&serverId=&serverName=&tableId=&starRatingValue=&hasStarRating=&hasComment=&timestampStart=&timestampEnd="</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Default-fetchFeedback-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.DefaultApi;
-
-import java.io.File;
-import java.util.*;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        
-        DefaultApi apiInstance = new DefaultApi();
-        Integer restaurantId = 56; // Integer | pass in the restaurant id that you'd like feedback for
-        Integer orderId = 56; // Integer | filter by order id number
-        Integer menuItemId = 56; // Integer | filter by menu item id number
-        Integer serverId = 56; // Integer | filter by server id number
-        Integer serverName = 56; // Integer | attempt to filter by server name
-        Integer tableId = 56; // Integer | filter by table id number
-        Integer starRatingValue = 56; // Integer | filter by rating number
-        Boolean hasStarRating = true; // Boolean | filter based on the existance of a star rating on the feedback
-        Boolean hasComment = true; // Boolean | filter based on the existance of a comment on the feedback
-        String timestampStart = timestampStart_example; // String | filter to get feedback that occured on an order taken after this start timestamp
-        String timestampEnd = timestampEnd_example; // String | filter to get feedback that occured on an order taken before this end timestamp
-        try {
-            array[Feedback] result = apiInstance.fetchFeedback(restaurantId, orderId, menuItemId, serverId, serverName, tableId, starRatingValue, hasStarRating, hasComment, timestampStart, timestampEnd);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#fetchFeedback");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Default-fetchFeedback-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
-
-public class DefaultApiExample {
-
-    public static void main(String[] args) {
-        DefaultApi apiInstance = new DefaultApi();
-        Integer restaurantId = 56; // Integer | pass in the restaurant id that you'd like feedback for
-        Integer orderId = 56; // Integer | filter by order id number
-        Integer menuItemId = 56; // Integer | filter by menu item id number
-        Integer serverId = 56; // Integer | filter by server id number
-        Integer serverName = 56; // Integer | attempt to filter by server name
-        Integer tableId = 56; // Integer | filter by table id number
-        Integer starRatingValue = 56; // Integer | filter by rating number
-        Boolean hasStarRating = true; // Boolean | filter based on the existance of a star rating on the feedback
-        Boolean hasComment = true; // Boolean | filter based on the existance of a comment on the feedback
-        String timestampStart = timestampStart_example; // String | filter to get feedback that occured on an order taken after this start timestamp
-        String timestampEnd = timestampEnd_example; // String | filter to get feedback that occured on an order taken before this end timestamp
-        try {
-            array[Feedback] result = apiInstance.fetchFeedback(restaurantId, orderId, menuItemId, serverId, serverName, tableId, starRatingValue, hasStarRating, hasComment, timestampStart, timestampEnd);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#fetchFeedback");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Default-fetchFeedback-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Default-fetchFeedback-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Integer *restaurantId = 56; // pass in the restaurant id that you'd like feedback for
-Integer *orderId = 56; // filter by order id number (optional)
-Integer *menuItemId = 56; // filter by menu item id number (optional)
-Integer *serverId = 56; // filter by server id number (optional)
-Integer *serverName = 56; // attempt to filter by server name (optional)
-Integer *tableId = 56; // filter by table id number (optional)
-Integer *starRatingValue = 56; // filter by rating number (optional)
-Boolean *hasStarRating = true; // filter based on the existance of a star rating on the feedback (optional)
-Boolean *hasComment = true; // filter based on the existance of a comment on the feedback (optional)
-String *timestampStart = timestampStart_example; // filter to get feedback that occured on an order taken after this start timestamp (optional)
-String *timestampEnd = timestampEnd_example; // filter to get feedback that occured on an order taken before this end timestamp (optional)
-
-DefaultApi *apiInstance = [[DefaultApi alloc] init];
-
-// searches all feedback
-[apiInstance fetchFeedbackWith:restaurantId
-    orderId:orderId
-    menuItemId:menuItemId
-    serverId:serverId
-    serverName:serverName
-    tableId:tableId
-    starRatingValue:starRatingValue
-    hasStarRating:hasStarRating
-    hasComment:hasComment
-    timestampStart:timestampStart
-    timestampEnd:timestampEnd
-              completionHandler: ^(array[Feedback] output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-fetchFeedback-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var GrazeAnalytics = require('graze_analytics');
-
-var api = new GrazeAnalytics.DefaultApi()
-
-var restaurantId = 56; // {Integer} pass in the restaurant id that you'd like feedback for
-
-var opts = { 
-  'orderId': 56, // {Integer} filter by order id number
-  'menuItemId': 56, // {Integer} filter by menu item id number
-  'serverId': 56, // {Integer} filter by server id number
-  'serverName': 56, // {Integer} attempt to filter by server name
-  'tableId': 56, // {Integer} filter by table id number
-  'starRatingValue': 56, // {Integer} filter by rating number
-  'hasStarRating': true, // {Boolean} filter based on the existance of a star rating on the feedback
-  'hasComment': true, // {Boolean} filter based on the existance of a comment on the feedback
-  'timestampStart': timestampStart_example, // {String} filter to get feedback that occured on an order taken after this start timestamp
-  'timestampEnd': timestampEnd_example // {String} filter to get feedback that occured on an order taken before this end timestamp
-};
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.fetchFeedback(restaurantId, opts, callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Default-fetchFeedback-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Default-fetchFeedback-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class fetchFeedbackExample
-    {
-        public void main()
-        {
-            
-            var apiInstance = new DefaultApi();
-            var restaurantId = 56;  // Integer | pass in the restaurant id that you'd like feedback for
-            var orderId = 56;  // Integer | filter by order id number (optional) 
-            var menuItemId = 56;  // Integer | filter by menu item id number (optional) 
-            var serverId = 56;  // Integer | filter by server id number (optional) 
-            var serverName = 56;  // Integer | attempt to filter by server name (optional) 
-            var tableId = 56;  // Integer | filter by table id number (optional) 
-            var starRatingValue = 56;  // Integer | filter by rating number (optional) 
-            var hasStarRating = true;  // Boolean | filter based on the existance of a star rating on the feedback (optional) 
-            var hasComment = true;  // Boolean | filter based on the existance of a comment on the feedback (optional) 
-            var timestampStart = timestampStart_example;  // String | filter to get feedback that occured on an order taken after this start timestamp (optional) 
-            var timestampEnd = timestampEnd_example;  // String | filter to get feedback that occured on an order taken before this end timestamp (optional) 
-
-            try
-            {
-                // searches all feedback
-                array[Feedback] result = apiInstance.fetchFeedback(restaurantId, orderId, menuItemId, serverId, serverName, tableId, starRatingValue, hasStarRating, hasComment, timestampStart, timestampEnd);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DefaultApi.fetchFeedback: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-fetchFeedback-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-$api_instance = new Swagger\Client\Api\DefaultApi();
-$restaurantId = 56; // Integer | pass in the restaurant id that you'd like feedback for
-$orderId = 56; // Integer | filter by order id number
-$menuItemId = 56; // Integer | filter by menu item id number
-$serverId = 56; // Integer | filter by server id number
-$serverName = 56; // Integer | attempt to filter by server name
-$tableId = 56; // Integer | filter by table id number
-$starRatingValue = 56; // Integer | filter by rating number
-$hasStarRating = true; // Boolean | filter based on the existance of a star rating on the feedback
-$hasComment = true; // Boolean | filter based on the existance of a comment on the feedback
-$timestampStart = timestampStart_example; // String | filter to get feedback that occured on an order taken after this start timestamp
-$timestampEnd = timestampEnd_example; // String | filter to get feedback that occured on an order taken before this end timestamp
-
-try {
-    $result = $api_instance->fetchFeedback($restaurantId, $orderId, $menuItemId, $serverId, $serverName, $tableId, $starRatingValue, $hasStarRating, $hasComment, $timestampStart, $timestampEnd);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->fetchFeedback: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-fetchFeedback-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::DefaultApi;
-
-my $api_instance = WWW::SwaggerClient::DefaultApi->new();
-my $restaurantId = 56; # Integer | pass in the restaurant id that you'd like feedback for
-my $orderId = 56; # Integer | filter by order id number
-my $menuItemId = 56; # Integer | filter by menu item id number
-my $serverId = 56; # Integer | filter by server id number
-my $serverName = 56; # Integer | attempt to filter by server name
-my $tableId = 56; # Integer | filter by table id number
-my $starRatingValue = 56; # Integer | filter by rating number
-my $hasStarRating = true; # Boolean | filter based on the existance of a star rating on the feedback
-my $hasComment = true; # Boolean | filter based on the existance of a comment on the feedback
-my $timestampStart = timestampStart_example; # String | filter to get feedback that occured on an order taken after this start timestamp
-my $timestampEnd = timestampEnd_example; # String | filter to get feedback that occured on an order taken before this end timestamp
-
-eval { 
-    my $result = $api_instance->fetchFeedback(restaurantId => $restaurantId, orderId => $orderId, menuItemId => $menuItemId, serverId => $serverId, serverName => $serverName, tableId => $tableId, starRatingValue => $starRatingValue, hasStarRating => $hasStarRating, hasComment => $hasComment, timestampStart => $timestampStart, timestampEnd => $timestampEnd);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling DefaultApi->fetchFeedback: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Default-fetchFeedback-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# create an instance of the API class
-api_instance = swagger_client.DefaultApi()
-restaurantId = 56 # Integer | pass in the restaurant id that you'd like feedback for
-orderId = 56 # Integer | filter by order id number (optional)
-menuItemId = 56 # Integer | filter by menu item id number (optional)
-serverId = 56 # Integer | filter by server id number (optional)
-serverName = 56 # Integer | attempt to filter by server name (optional)
-tableId = 56 # Integer | filter by table id number (optional)
-starRatingValue = 56 # Integer | filter by rating number (optional)
-hasStarRating = true # Boolean | filter based on the existance of a star rating on the feedback (optional)
-hasComment = true # Boolean | filter based on the existance of a comment on the feedback (optional)
-timestampStart = timestampStart_example # String | filter to get feedback that occured on an order taken after this start timestamp (optional)
-timestampEnd = timestampEnd_example # String | filter to get feedback that occured on an order taken before this end timestamp (optional)
-
-try: 
-    # searches all feedback
-    api_response = api_instance.fetch_feedback(restaurantId, orderId=orderId, menuItemId=menuItemId, serverId=serverId, serverName=serverName, tableId=tableId, starRatingValue=starRatingValue, hasStarRating=hasStarRating, hasComment=hasComment, timestampStart=timestampStart, timestampEnd=timestampEnd)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->fetchFeedback: %s\n" % e)</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Parameters</h2>
-
-
-
-
-
-                            <div class="methodsubtabletitle">Query parameters</div>
-                            <table id="methodsubtable">
-                              <tr>
-                                <th width="150px">Name</th>
-                                <th>Description</th>
-                              </tr>
-                                <tr><td style="width:150px;">restaurantId*</td>
-<td>
-
-
-    <div id="d2e199_fetchFeedback_restaurantId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Integer
-                </span>
-
-                    <div class="inner description">
-                        pass in the restaurant id that you&#39;d like feedback for
-                    </div>
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                <tr><td style="width:150px;">orderId</td>
-<td>
-
-
-    <div id="d2e199_fetchFeedback_orderId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Integer
-                </span>
-
-                    <div class="inner description">
-                        filter by order id number
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                <tr><td style="width:150px;">menuItemId</td>
-<td>
-
-
-    <div id="d2e199_fetchFeedback_menuItemId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Integer
-                </span>
-
-                    <div class="inner description">
-                        filter by menu item id number
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                <tr><td style="width:150px;">serverId</td>
-<td>
-
-
-    <div id="d2e199_fetchFeedback_serverId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Integer
-                </span>
-
-                    <div class="inner description">
-                        filter by server id number
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                <tr><td style="width:150px;">serverName</td>
-<td>
-
-
-    <div id="d2e199_fetchFeedback_serverName">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Integer
-                </span>
-
-                    <div class="inner description">
-                        attempt to filter by server name
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                <tr><td style="width:150px;">tableId</td>
-<td>
-
-
-    <div id="d2e199_fetchFeedback_tableId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Integer
-                </span>
-
-                    <div class="inner description">
-                        filter by table id number
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                <tr><td style="width:150px;">starRatingValue</td>
-<td>
-
-
-    <div id="d2e199_fetchFeedback_starRatingValue">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Integer
-                </span>
-
-                    <div class="inner description">
-                        filter by rating number
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                <tr><td style="width:150px;">hasStarRating</td>
-<td>
-
-
-    <div id="d2e199_fetchFeedback_hasStarRating">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Boolean
-                </span>
-
-                    <div class="inner description">
-                        filter based on the existance of a star rating on the feedback
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                <tr><td style="width:150px;">hasComment</td>
-<td>
-
-
-    <div id="d2e199_fetchFeedback_hasComment">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Boolean
-                </span>
-
-                    <div class="inner description">
-                        filter based on the existance of a comment on the feedback
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                <tr><td style="width:150px;">timestampStart</td>
-<td>
-
-
-    <div id="d2e199_fetchFeedback_timestampStart">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description">
-                        filter to get feedback that occured on an order taken after this start timestamp
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                                <tr><td style="width:150px;">timestampEnd</td>
-<td>
-
-
-    <div id="d2e199_fetchFeedback_timestampEnd">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    String
-                </span>
-
-                    <div class="inner description">
-                        filter to get feedback that occured on an order taken before this end timestamp
-                    </div>
-            </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                            </table>
-
-                          <h2>Responses</h2>
-                            <h3> Status: 200 - search results matching criteria </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-fetchFeedback-200-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-fetchFeedback-200-schema">
-                                  <div id='responses-fetchFeedback-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "search results matching criteria",
-  "schema" : {
-    "type" : "array",
-    "items" : {
-      "$ref" : "#/definitions/Feedback"
-    }
-  }
-};
-                                        var schema = schemaWrapper.schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = defs;
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-fetchFeedback-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-fetchFeedback-200-schema-200');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-fetchFeedback-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                            <h3> Status: 204 - no results match given criteria </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                            </div>
-
-                            <h3> Status: 400 - bad input parameter </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                            </div>
-
-                        </article>
-                      </div>
-                      <hr>
                     <div id="api-Default-fetchMenuItems">
                       <article id="api-Default-fetchMenuItems-0" data-group="User" data-name="fetchMenuItems" data-version="0">
                         <div class="pull-left">
@@ -2126,6 +1523,609 @@ except ApiException as e:
                                   </div>
                                   <input id='responses-fetchOrders-200-schema-data' type='hidden' value=''></input>
                                 </div>
+                            </div>
+
+                            <h3> Status: 400 - bad input parameter </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Default-fetchReviews">
+                      <article id="api-Default-fetchReviews-0" data-group="User" data-name="fetchReviews" data-version="0">
+                        <div class="pull-left">
+                          <h1>fetchReviews</h1>
+                          <p>searches all reviews</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">A filter style query of all collected reviews in the system.</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/reviews</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Default-fetchReviews-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-fetchReviews-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-fetchReviews-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-fetchReviews-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-fetchReviews-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-fetchReviews-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-fetchReviews-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-fetchReviews-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-fetchReviews-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-fetchReviews-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-fetchReviews-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Default-fetchReviews-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET "https://localhost/reviews?restaurantId=&orderId=&menuItemId=&serverId=&serverName=&tableId=&starRatingValue=&hasStarRating=&hasComment=&timestampStart=&timestampEnd="</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Default-fetchReviews-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        
+        DefaultApi apiInstance = new DefaultApi();
+        Integer restaurantId = 56; // Integer | pass in the restaurant id that you'd like a review for
+        Integer orderId = 56; // Integer | filter by order id number
+        Integer menuItemId = 56; // Integer | filter by menu item id number
+        Integer serverId = 56; // Integer | filter by server id number
+        Integer serverName = 56; // Integer | attempt to filter by server name
+        Integer tableId = 56; // Integer | filter by table id number
+        Integer starRatingValue = 56; // Integer | filter by rating number
+        Boolean hasStarRating = true; // Boolean | filter based on the existance of a star rating on the review
+        Boolean hasComment = true; // Boolean | filter based on the existance of a comment on the review
+        String timestampStart = timestampStart_example; // String | filter to get a review that occured on an order taken after this start timestamp
+        String timestampEnd = timestampEnd_example; // String | filter to get a review that occured on an order taken before this end timestamp
+        try {
+            array[review] result = apiInstance.fetchReviews(restaurantId, orderId, menuItemId, serverId, serverName, tableId, starRatingValue, hasStarRating, hasComment, timestampStart, timestampEnd);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#fetchReviews");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Default-fetchReviews-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        DefaultApi apiInstance = new DefaultApi();
+        Integer restaurantId = 56; // Integer | pass in the restaurant id that you'd like a review for
+        Integer orderId = 56; // Integer | filter by order id number
+        Integer menuItemId = 56; // Integer | filter by menu item id number
+        Integer serverId = 56; // Integer | filter by server id number
+        Integer serverName = 56; // Integer | attempt to filter by server name
+        Integer tableId = 56; // Integer | filter by table id number
+        Integer starRatingValue = 56; // Integer | filter by rating number
+        Boolean hasStarRating = true; // Boolean | filter based on the existance of a star rating on the review
+        Boolean hasComment = true; // Boolean | filter based on the existance of a comment on the review
+        String timestampStart = timestampStart_example; // String | filter to get a review that occured on an order taken after this start timestamp
+        String timestampEnd = timestampEnd_example; // String | filter to get a review that occured on an order taken before this end timestamp
+        try {
+            array[review] result = apiInstance.fetchReviews(restaurantId, orderId, menuItemId, serverId, serverName, tableId, starRatingValue, hasStarRating, hasComment, timestampStart, timestampEnd);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#fetchReviews");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Default-fetchReviews-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Default-fetchReviews-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Integer *restaurantId = 56; // pass in the restaurant id that you'd like a review for
+Integer *orderId = 56; // filter by order id number (optional)
+Integer *menuItemId = 56; // filter by menu item id number (optional)
+Integer *serverId = 56; // filter by server id number (optional)
+Integer *serverName = 56; // attempt to filter by server name (optional)
+Integer *tableId = 56; // filter by table id number (optional)
+Integer *starRatingValue = 56; // filter by rating number (optional)
+Boolean *hasStarRating = true; // filter based on the existance of a star rating on the review (optional)
+Boolean *hasComment = true; // filter based on the existance of a comment on the review (optional)
+String *timestampStart = timestampStart_example; // filter to get a review that occured on an order taken after this start timestamp (optional)
+String *timestampEnd = timestampEnd_example; // filter to get a review that occured on an order taken before this end timestamp (optional)
+
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+// searches all reviews
+[apiInstance fetchReviewsWith:restaurantId
+    orderId:orderId
+    menuItemId:menuItemId
+    serverId:serverId
+    serverName:serverName
+    tableId:tableId
+    starRatingValue:starRatingValue
+    hasStarRating:hasStarRating
+    hasComment:hasComment
+    timestampStart:timestampStart
+    timestampEnd:timestampEnd
+              completionHandler: ^(array[review] output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-fetchReviews-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var GrazeAnalytics = require('graze_analytics');
+
+var api = new GrazeAnalytics.DefaultApi()
+
+var restaurantId = 56; // {Integer} pass in the restaurant id that you'd like a review for
+
+var opts = { 
+  'orderId': 56, // {Integer} filter by order id number
+  'menuItemId': 56, // {Integer} filter by menu item id number
+  'serverId': 56, // {Integer} filter by server id number
+  'serverName': 56, // {Integer} attempt to filter by server name
+  'tableId': 56, // {Integer} filter by table id number
+  'starRatingValue': 56, // {Integer} filter by rating number
+  'hasStarRating': true, // {Boolean} filter based on the existance of a star rating on the review
+  'hasComment': true, // {Boolean} filter based on the existance of a comment on the review
+  'timestampStart': timestampStart_example, // {String} filter to get a review that occured on an order taken after this start timestamp
+  'timestampEnd': timestampEnd_example // {String} filter to get a review that occured on an order taken before this end timestamp
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.fetchReviews(restaurantId, opts, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Default-fetchReviews-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Default-fetchReviews-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class fetchReviewsExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new DefaultApi();
+            var restaurantId = 56;  // Integer | pass in the restaurant id that you'd like a review for
+            var orderId = 56;  // Integer | filter by order id number (optional) 
+            var menuItemId = 56;  // Integer | filter by menu item id number (optional) 
+            var serverId = 56;  // Integer | filter by server id number (optional) 
+            var serverName = 56;  // Integer | attempt to filter by server name (optional) 
+            var tableId = 56;  // Integer | filter by table id number (optional) 
+            var starRatingValue = 56;  // Integer | filter by rating number (optional) 
+            var hasStarRating = true;  // Boolean | filter based on the existance of a star rating on the review (optional) 
+            var hasComment = true;  // Boolean | filter based on the existance of a comment on the review (optional) 
+            var timestampStart = timestampStart_example;  // String | filter to get a review that occured on an order taken after this start timestamp (optional) 
+            var timestampEnd = timestampEnd_example;  // String | filter to get a review that occured on an order taken before this end timestamp (optional) 
+
+            try
+            {
+                // searches all reviews
+                array[review] result = apiInstance.fetchReviews(restaurantId, orderId, menuItemId, serverId, serverName, tableId, starRatingValue, hasStarRating, hasComment, timestampStart, timestampEnd);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.fetchReviews: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-fetchReviews-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\Api\DefaultApi();
+$restaurantId = 56; // Integer | pass in the restaurant id that you'd like a review for
+$orderId = 56; // Integer | filter by order id number
+$menuItemId = 56; // Integer | filter by menu item id number
+$serverId = 56; // Integer | filter by server id number
+$serverName = 56; // Integer | attempt to filter by server name
+$tableId = 56; // Integer | filter by table id number
+$starRatingValue = 56; // Integer | filter by rating number
+$hasStarRating = true; // Boolean | filter based on the existance of a star rating on the review
+$hasComment = true; // Boolean | filter based on the existance of a comment on the review
+$timestampStart = timestampStart_example; // String | filter to get a review that occured on an order taken after this start timestamp
+$timestampEnd = timestampEnd_example; // String | filter to get a review that occured on an order taken before this end timestamp
+
+try {
+    $result = $api_instance->fetchReviews($restaurantId, $orderId, $menuItemId, $serverId, $serverName, $tableId, $starRatingValue, $hasStarRating, $hasComment, $timestampStart, $timestampEnd);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->fetchReviews: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-fetchReviews-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::DefaultApi;
+
+my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $restaurantId = 56; # Integer | pass in the restaurant id that you'd like a review for
+my $orderId = 56; # Integer | filter by order id number
+my $menuItemId = 56; # Integer | filter by menu item id number
+my $serverId = 56; # Integer | filter by server id number
+my $serverName = 56; # Integer | attempt to filter by server name
+my $tableId = 56; # Integer | filter by table id number
+my $starRatingValue = 56; # Integer | filter by rating number
+my $hasStarRating = true; # Boolean | filter based on the existance of a star rating on the review
+my $hasComment = true; # Boolean | filter based on the existance of a comment on the review
+my $timestampStart = timestampStart_example; # String | filter to get a review that occured on an order taken after this start timestamp
+my $timestampEnd = timestampEnd_example; # String | filter to get a review that occured on an order taken before this end timestamp
+
+eval { 
+    my $result = $api_instance->fetchReviews(restaurantId => $restaurantId, orderId => $orderId, menuItemId => $menuItemId, serverId => $serverId, serverName => $serverName, tableId => $tableId, starRatingValue => $starRatingValue, hasStarRating => $hasStarRating, hasComment => $hasComment, timestampStart => $timestampStart, timestampEnd => $timestampEnd);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->fetchReviews: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-fetchReviews-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+restaurantId = 56 # Integer | pass in the restaurant id that you'd like a review for
+orderId = 56 # Integer | filter by order id number (optional)
+menuItemId = 56 # Integer | filter by menu item id number (optional)
+serverId = 56 # Integer | filter by server id number (optional)
+serverName = 56 # Integer | attempt to filter by server name (optional)
+tableId = 56 # Integer | filter by table id number (optional)
+starRatingValue = 56 # Integer | filter by rating number (optional)
+hasStarRating = true # Boolean | filter based on the existance of a star rating on the review (optional)
+hasComment = true # Boolean | filter based on the existance of a comment on the review (optional)
+timestampStart = timestampStart_example # String | filter to get a review that occured on an order taken after this start timestamp (optional)
+timestampEnd = timestampEnd_example # String | filter to get a review that occured on an order taken before this end timestamp (optional)
+
+try: 
+    # searches all reviews
+    api_response = api_instance.fetch_reviews(restaurantId, orderId=orderId, menuItemId=menuItemId, serverId=serverId, serverName=serverName, tableId=tableId, starRatingValue=starRatingValue, hasStarRating=hasStarRating, hasComment=hasComment, timestampStart=timestampStart, timestampEnd=timestampEnd)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->fetchReviews: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">restaurantId*</td>
+<td>
+
+
+    <div id="d2e199_fetchReviews_restaurantId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+                    <div class="inner description">
+                        pass in the restaurant id that you&#39;d like a review for
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">orderId</td>
+<td>
+
+
+    <div id="d2e199_fetchReviews_orderId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+                    <div class="inner description">
+                        filter by order id number
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">menuItemId</td>
+<td>
+
+
+    <div id="d2e199_fetchReviews_menuItemId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+                    <div class="inner description">
+                        filter by menu item id number
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">serverId</td>
+<td>
+
+
+    <div id="d2e199_fetchReviews_serverId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+                    <div class="inner description">
+                        filter by server id number
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">serverName</td>
+<td>
+
+
+    <div id="d2e199_fetchReviews_serverName">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+                    <div class="inner description">
+                        attempt to filter by server name
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">tableId</td>
+<td>
+
+
+    <div id="d2e199_fetchReviews_tableId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+                    <div class="inner description">
+                        filter by table id number
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">starRatingValue</td>
+<td>
+
+
+    <div id="d2e199_fetchReviews_starRatingValue">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+                    <div class="inner description">
+                        filter by rating number
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">hasStarRating</td>
+<td>
+
+
+    <div id="d2e199_fetchReviews_hasStarRating">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Boolean
+                </span>
+
+                    <div class="inner description">
+                        filter based on the existance of a star rating on the review
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">hasComment</td>
+<td>
+
+
+    <div id="d2e199_fetchReviews_hasComment">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Boolean
+                </span>
+
+                    <div class="inner description">
+                        filter based on the existance of a comment on the review
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">timestampStart</td>
+<td>
+
+
+    <div id="d2e199_fetchReviews_timestampStart">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description">
+                        filter to get a review that occured on an order taken after this start timestamp
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                <tr><td style="width:150px;">timestampEnd</td>
+<td>
+
+
+    <div id="d2e199_fetchReviews_timestampEnd">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description">
+                        filter to get a review that occured on an order taken before this end timestamp
+                    </div>
+            </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - search results matching criteria </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-fetchReviews-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-fetchReviews-200-schema">
+                                  <div id='responses-fetchReviews-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "search results matching criteria",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/review"
+    }
+  }
+};
+                                        var schema = schemaWrapper.schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = defs;
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-fetchReviews-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-fetchReviews-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-fetchReviews-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 204 - no results match given criteria </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
                             </div>
 
                             <h3> Status: 400 - bad input parameter </h3>

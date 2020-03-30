@@ -13,17 +13,17 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 
 paths:
-  /feedback:
+  /reviews:
     get:
-      summary: searches all feedback
-      operationId: fetchFeedback
-      description: A filter style query of all collected feedback in the system.
+      summary: searches all reviews
+      operationId: fetchReviews
+      description: A filter style query of all collected reviews in the system.
       produces:
       - application/json
       parameters:
       - in: query
         name: restaurantId
-        description: pass in the restaurant id that you'd like feedback for
+        description: pass in the restaurant id that you'd like a review for
         required: true
         type: integer
       - in: query
@@ -58,22 +58,22 @@ paths:
         type: integer
       - in: query
         name: hasStarRating
-        description: filter based on the existance of a star rating on the feedback
+        description: filter based on the existance of a star rating on the review
         required: false
         type: boolean
       - in: query
         name: hasComment
-        description: filter based on the existance of a comment on the feedback
+        description: filter based on the existance of a comment on the review
         required: false
         type: boolean
       - in: query
         name: timestampStart
-        description: filter to get feedback that occured on an order taken after this start timestamp
+        description: filter to get a review that occured on an order taken after this start timestamp
         required: false
         type: string
       - in: query
         name: timestampEnd
-        description: filter to get feedback that occured on an order taken before this end timestamp
+        description: filter to get a review that occured on an order taken before this end timestamp
         required: false
         type: string
         
@@ -83,14 +83,14 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/Feedback'
+              $ref: '#/definitions/review'
         204:
           description: no results match given criteria
         400:
           description: bad input parameter
     # post:
-    #   summary: creates a piece of feedback
-    #   operationId: addFeedback
+    #   summary: creates a piece of review
+    #   operationId: addreview
     #   description: "requires: 1) both a restaurant_id and order_id 2) One of three: menu_item_id server_id table_id 3) star_rating or(/and) comment."
     #   consumes:
     #   - application/json
@@ -98,15 +98,15 @@ paths:
     #   - application/json
     #   parameters:
     #   - in: body
-    #     name: Feedback
-    #     description: Feedback item to add
+    #     name: review
+    #     description: review item to add
     #     schema:
-    #       $ref: '#/definitions/Feedback'
+    #       $ref: '#/definitions/review'
     #   responses:
     #     201:
-    #       description: Feedback created
+    #       description: review created
     #     400:
-    #       description: "Feedback object invalid (missing: ___ )"
+    #       description: "review object invalid (missing: ___ )"
   /orders:
     get:
       summary: Retrieve orders
@@ -217,7 +217,7 @@ paths:
           description: Invalid Login 
 
 definitions:
-  Feedback:
+  review:
     required:
     - id
     - restaurant_id
